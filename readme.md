@@ -27,7 +27,7 @@
    
    apt update
    apt upgrade
-   apt install build-essential libelf-dev bison flex libssl-dev libncurses-dev bc git cpio dwarves python3
+   apt install build-essential libelf-dev bison flex libssl-dev libncurses-dev bc git cpio dwarves python3 kmod
 
 7.解压缩下载的内核压缩包 如果是git clone 则切换到对应的分支
 
@@ -40,3 +40,7 @@
 等待编译完成即可
 
 ## hello.ko
+
+参照教程编写的简易入门的ko 由于是特权容器 这里可以执行插入ko的命令 并通过dmesg -w看到打印
+
+    此时的用于编译的内核路径应被指定为: /usr/xgl/WSL2-Linux-Kernel-linux-msft-wsl-6.6.87.2
