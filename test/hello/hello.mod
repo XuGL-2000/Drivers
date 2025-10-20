@@ -1,1 +1,1 @@
-/usr/xgl/test/hello/hello.o
+/usr/xgl/test/hello/src/hello_intf.o
