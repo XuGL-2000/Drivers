@@ -1,3 +1,10 @@
 WSL2-Linux-Kernel-linux-msft-wsl-6.6.87.2
 WSL2-Linux-Kernel-linux-msft-wsl-6.6.87.2.zip
 .vscode
+*.cmd
+*.o
+*.mod
+*.symvers
+*.order
+*.ko
+*.mod.*

@@ -1,1 +1,1 @@
-echo $(src)
+echo "$(src)"
