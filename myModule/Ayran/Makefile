@@ -3,15 +3,16 @@ KDIR := /usr/src/linux-headers-5.15.0-106-generic/
 # CFLAGS += -Iinc
 obj-m := Ayran.o
 
-# SRC_DIR := src
-# SRCS := $(wildcard $(SRC_DIR)/*.c)
-# Ayran-objs += $(SRCS:.c=.o)
+CFILES := $(wildcard $(src)/src/hello/*.c)
+Ayran-objs += $(patsubst $(src)/%.c,%.o,$(CFILES))
+$(warning CFILES=$(CFILES))
+$(warning OBJS=$(Ayran-objs))
 
-Ayran-objs += src/hello_print.o \
-			  src/hello_time.o \
-			  src/hello_main.o
+# Ayran-objs += src/hello/hello_print.o \
+# 			  src/hello/hello_time.o \
+# 			  src/hello/hello_main.o
 
-ccflags-y := -I$(src)/inc
+ccflags-y := -I$(src)/inc/hello
 # 			 -I/usr/xgl/WSL2-Linux-Kernel-linux-msft-wsl-6.6.87.2/tools/include
 # KDIR :=/usr/xgl/WSL2-Linux-Kernel-linux-msft-wsl-6.6.87.2
 
@@ -20,5 +21,5 @@ all:
 clean:
 	$(MAKE) -C $(KDIR) M=$(PWD) clean
 check:
-	@echo "$(KDIR)"
+	@echo "$(SRCS)"
 	@echo "$(src)/src"
