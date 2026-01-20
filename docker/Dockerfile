@@ -8,6 +8,7 @@ RUN apt-get update && \
     gcc \
     make \
     vim \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
 # 创建 SSH 所需的目录
