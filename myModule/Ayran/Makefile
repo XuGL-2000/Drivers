@@ -3,8 +3,8 @@ KDIR := /usr/src/linux-headers-5.15.0-106-generic/
 # CFLAGS += -Iinc
 obj-m := Ayran.o
 
-CFILES := $(wildcard $(src)/src/hello/*.c)
-Ayran-objs += $(patsubst $(src)/%.c,%.o,$(CFILES))
+AyranFiles := $(wildcard $(src)/src/hello/*.c)
+Ayran-objs += $(patsubst $(src)/%.c,%.o,$(AyranFiles))
 $(warning CFILES=$(CFILES))
 $(warning OBJS=$(Ayran-objs))
 
@@ -12,9 +12,14 @@ $(warning OBJS=$(Ayran-objs))
 # 			  src/hello/hello_time.o \
 # 			  src/hello/hello_main.o
 
-ccflags-y := -I$(src)/inc/hello
+ccflags-y := -I$(src)/inc/hello \
+			 -I$(src)/inc/cdev
 # 			 -I/usr/xgl/WSL2-Linux-Kernel-linux-msft-wsl-6.6.87.2/tools/include
 # KDIR :=/usr/xgl/WSL2-Linux-Kernel-linux-msft-wsl-6.6.87.2
+
+obj-m:=cdev.o
+cdevFiles := $(wildcard $(src)/src/cdev/*.c)
+cdev-objs += $(patsubst $(src)/%.c,%.o,$(cdevFiles))
 
 all:
 	$(MAKE) -C $(KDIR) M=$(PWD) modules
